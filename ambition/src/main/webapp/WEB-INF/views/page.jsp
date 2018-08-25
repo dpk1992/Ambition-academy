@@ -46,8 +46,8 @@
 			</c:if>
 
 			<!-- product -->
-			<c:if test="${userClickProduct == true}">
-				<%@ include file="product.jsp"%>
+			<c:if test="${userClickAllProducts == true or userClickCategoryProducts == true}">
+				<%@ include file="listProduct.jsp"%>
 			</c:if>
 
 			<!-- contact -->
