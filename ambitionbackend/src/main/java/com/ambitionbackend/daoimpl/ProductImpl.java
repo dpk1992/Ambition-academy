@@ -2,8 +2,6 @@ package com.ambitionbackend.daoimpl;
 
 import java.util.List;
 
-import javax.management.loading.PrivateClassLoader;
-
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -12,8 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.ambitionbackend.dao.ProductDAO;
 import com.ambitionbackend.dto.Product;
 
+@Repository("productDAO")
 @Transactional
-@Repository("ProductDAO")
 public class ProductImpl implements ProductDAO {
 
 	@Autowired
@@ -21,9 +19,10 @@ public class ProductImpl implements ProductDAO {
 
 	// Single product
 	@Override
-	public Product get(int ProductId) {
+	public Product get(int productId) {
 		try {
-			return sessionFactory.getCurrentSession().get(Product.class, Integer.valueOf(ProductId));
+			return sessionFactory.getCurrentSession()
+					.get(Product.class, Integer.valueOf(productId));
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -36,14 +35,19 @@ public class ProductImpl implements ProductDAO {
 	@Override
 	public List<Product> list() {
 
-		return sessionFactory.getCurrentSession().createQuery("From Product", Product.class).getResultList();
+		return sessionFactory
+				.getCurrentSession()
+				.createQuery("From Product", Product.class)
+				.getResultList();
 	}
 
    //Insert product
 	@Override
 	public boolean add(Product product) {
 		try {
-			sessionFactory.getCurrentSession().persist(product);
+			sessionFactory
+			.getCurrentSession().persist(product);
+			
 			return true;
 
 		} catch (Exception e) {
@@ -56,7 +60,9 @@ public class ProductImpl implements ProductDAO {
 	@Override
 	public boolean update(Product product) {
 		try {
-			sessionFactory.getCurrentSession().update(product);
+			sessionFactory
+			.getCurrentSession()
+			.update(product);
 			return true;
 
 		} catch (Exception e) {
@@ -82,21 +88,22 @@ public class ProductImpl implements ProductDAO {
 	public List<Product> listActiveProducts() {
 		String setActiveProduct = "FROM Product WHERE active = :active";
 		
-		return sessionFactory.getCurrentSession()
-						.createStoredProcedureCall(setActiveProduct, Product.class)
-						.setParameter("active", true)
-						.getResultList();
+		return sessionFactory
+				.getCurrentSession()
+				 .createQuery(setActiveProduct, Product.class)
+					.setParameter("active", true)
+					.getResultList();
 				
 	}
 
 	@Override
 	public List<Product> listActiveProductsByCategory(int categoryId) {
-String setActiveProductByCategory = "FROM Product WHERE active = :active And categoryId = :categoryId";
+String setActiveProductByCategory = "FROM Product WHERE active = :active AND categoryId = :categoryId";
 		
 		return sessionFactory.getCurrentSession()
-						.createStoredProcedureCall(setActiveProductByCategory, Product.class)
+						.createQuery(setActiveProductByCategory, Product.class)
 						.setParameter("active", true)
-						.setParameter("categoryId", true)
+						.setParameter("categoryId", categoryId)
 						.getResultList();
 		
 	}
@@ -104,11 +111,12 @@ String setActiveProductByCategory = "FROM Product WHERE active = :active And cat
 	@Override
 	public List<Product> getLatestActiveProducts(int count) {
 		return sessionFactory.getCurrentSession()
-				.createStoredProcedureCall("FROM PRODUCT WHERE active = :active ORDER BY Id", Product.class)
+				.createQuery("FROM Product WHERE active = :active ORDER BY id", Product.class)
 				.setParameter("active", true)
 				.setFirstResult(0)
 				.setMaxResults(count)
 				.getResultList();
 	}
+	
 
 }

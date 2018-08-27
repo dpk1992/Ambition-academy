@@ -26,6 +26,7 @@ public class PageController {
 		return mav;
 
 	}
+	
 	@RequestMapping(value = "/about" )
 	public ModelAndView about() {
 		ModelAndView mav = new ModelAndView("page");
@@ -34,6 +35,7 @@ public class PageController {
 		return mav;
 
 	}
+	
 	@RequestMapping(value = "/contact")
 	public ModelAndView contact() {
 		ModelAndView mav = new ModelAndView("page");
@@ -55,6 +57,7 @@ public class PageController {
 		return mav;
 
 	}
+	
 	@RequestMapping(value = { "show/category/{id}/products" })
 	public ModelAndView showCategoryProducts(@PathVariable("id") int id) {
 		ModelAndView mav = new ModelAndView("page");
@@ -70,6 +73,4 @@ public class PageController {
 		return mav;
 
 	}
-
-
 }

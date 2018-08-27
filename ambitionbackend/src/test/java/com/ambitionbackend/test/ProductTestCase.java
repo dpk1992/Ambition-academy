@@ -1,9 +1,7 @@
 package com.ambitionbackend.test;
 
 import static org.junit.Assert.assertEquals;
-
-import javax.persistence.Column;
-
+import org.junit.Test;
 import org.junit.BeforeClass;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -19,12 +17,13 @@ public class ProductTestCase {
 	@BeforeClass
 	public static void init() {
 		context = new AnnotationConfigApplicationContext();
-		context.scan("com.ambitionBackend");
+		context.scan("com.ambitionbackend");
 		context.refresh();
 		productDAO = (ProductDAO) context.getBean("productDAO");
 		
 	}
-	
+	/*
+	@Test
 	public void testCRUDProduct() {
 		//create Operation
 		product = new Product();
@@ -42,7 +41,7 @@ public class ProductTestCase {
 	   //reading and updating Category
 	   
 	   product = productDAO.get(2);
-	   product.setName("Samsung Galaxy s7");
+	   product.setName("Samsung s7");
 	   assertEquals("somthing went to wrong while updating the exiting record", true 
 			   , productDAO.update(product));
 	   
@@ -51,10 +50,28 @@ public class ProductTestCase {
 	   
 	   assertEquals("somthing went to wrong while updating the exiting record", 6
 			   , productDAO.list().size());
-	   
-	   
-	   
-
+	}
+*/
+	
+	@Test
+	public void testListActiveProducts() {
+		 assertEquals("somthing went to wrong while updating the exiting record", 5
+				   , productDAO.listActiveProducts().size());
+	}
+	
+	@Test
+	public void testlistActiveProductsByCategory() {
+		assertEquals("somthing went to wrong while updating the exiting record", 3
+				   , productDAO.listActiveProductsByCategory(3).size());
+		assertEquals("somthing went to wrong while updating the exiting record", 2
+				   , productDAO.listActiveProductsByCategory(1).size());
+	}
+	
+	@Test
+	public void testGetLatestActiveProduct() {
+		assertEquals("somthing went to wrong while updating the exiting record", 3
+				   , productDAO.getLatestActiveProducts(3).size());
+		
+	}
 	}
 
-}

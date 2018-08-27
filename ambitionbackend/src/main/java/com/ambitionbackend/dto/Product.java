@@ -3,11 +3,14 @@ package com.ambitionbackend.dto;
 import java.util.UUID;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import org.omg.CORBA.PRIVATE_MEMBER;
+import org.springframework.stereotype.Component;
+
+@Entity
 
 public class Product {
 	
@@ -21,6 +24,7 @@ public class Product {
 	private String code;
 	private String name;
 	private String brand;
+	@Column(name ="description")
 	private String discription;
 	@Column(name = "unit_price")
 	private double unitPrice;
@@ -41,13 +45,9 @@ public class Product {
 		
 		this.code ="PRD" +UUID.randomUUID().toString().substring(26).toUpperCase();
 	}
-	@Override
-	public String toString() {
-		return "Product [id=" + id + ", code=" + code + ", name=" + name + ", brand=" + brand + ", discription="
-				+ discription + ", unitPrice=" + unitPrice + ", quantity=" + quantity + ", active=" + active
-				+ ", categoryId=" + categoryId + ", supplierId=" + supplierId + ", purchases=" + purchases + ", views="
-				+ views + "]";
-	}
+	
+	
+
 	public int getId() {
 		return id;
 	}

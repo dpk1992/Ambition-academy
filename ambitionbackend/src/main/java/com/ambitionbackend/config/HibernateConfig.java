@@ -44,6 +44,7 @@ public class HibernateConfig {
 		// sessionFactory bean will be available
 		@Bean
 		public SessionFactory getSessionFactory(DataSource dataSource){
+		
 			LocalSessionFactoryBuilder  builder= new LocalSessionFactoryBuilder( dataSource);
 			builder.addProperties(getHibarnateProperties(""));
 			builder.scanPackages("com.ambitionbackend.dto");

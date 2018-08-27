@@ -105,6 +105,6 @@ public class CategoryTestCase {
 		 assertEquals("successfully delete ",true,categoryDAO.delete(category));
 		 
 		 //fetching the list
-		 assertEquals("successfully fatche the list of category ",14,categoryDAO.list().size());
+		 assertEquals("successfully fatche the list of category ",2,categoryDAO.list().size());
 	}
 }
