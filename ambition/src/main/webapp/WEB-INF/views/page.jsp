@@ -16,7 +16,8 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-
+<meta name="_csrf" content="${_csrf.token}">
+<meta name="_csrf_header" content="${_csrf.headerName}">
 <title>Ambition Academy ${title}</title>
 <script>
 	window.menu = '${title}';
@@ -31,6 +32,7 @@
 </head>
 
 <body>
+<div class="se-pre-con"></div>
 	<div class="wrapper">
 		<!-- Navigation -->
 		<%@ include file="./shared/navbar.jsp"%>

@@ -30,7 +30,7 @@ public class PageController {
 	@RequestMapping(value = "/about" )
 	public ModelAndView about() {
 		ModelAndView mav = new ModelAndView("page");
-		mav.addObject("title","about");
+		mav.addObject("title","About Us");
 		mav.addObject("userClickAbout",true);
 		return mav;
 
@@ -39,7 +39,7 @@ public class PageController {
 	@RequestMapping(value = "/contact")
 	public ModelAndView contact() {
 		ModelAndView mav = new ModelAndView("page");
-		mav.addObject("title","contact");
+		mav.addObject("title","Contact Us");
 		mav.addObject("userClickContact",true);
 		return mav;
 
