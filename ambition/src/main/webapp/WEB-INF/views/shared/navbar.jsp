@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top ">
       <div class="container">
         <a class="navbar-brand" href="${contextRoot}/home">Ambition Academy</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" 

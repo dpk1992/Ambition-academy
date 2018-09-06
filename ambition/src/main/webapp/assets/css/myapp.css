@@ -7,11 +7,9 @@ html {
 	height: 100%;
 }
 
-
-
 @media ( min-width : 992px) {
 	body {
-	height: 100%;
+		height: 100%;
 		padding-top: 56px;
 		padding-top: 56px;
 	}
@@ -27,20 +25,18 @@ html {
 		position: relative;
 	}
 	.content {
-		padding-bottom: 60px; /*height of the footer*/
+		padding-bottom: 90px; /*height of the footer*/
 	}
 	.footer {
 		width: 100%;
 		position: absolute;
-		bottom: 0 px;
-		height: 60px;
-		
+		bottom: 5px;
+		height: 10px;
 	}
-	/*!
+
+}
+/*!
  * Start Bootstrap - Shop Homepage (https://startbootstrap.com/template-overviews/shop-homepage)
  * Copyright 2013-2017 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-shop-homepage/blob/master/LICENSE)
  */
-
-
-
