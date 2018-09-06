@@ -10,6 +10,8 @@ import javax.persistence.Id;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 
 public class Product {
@@ -24,19 +26,25 @@ public class Product {
 	private String code;
 	private String name;
 	private String brand;
-	@Column(name ="description")
-	private String discription;
+	private String description;
 	@Column(name = "unit_price")
 	private double unitPrice;
 	private  int quantity;
+	@JsonIgnore
 	@Column(name = "is_active")
 	private  boolean active;
+	@JsonIgnore
 	@Column(name = "category_id")
 	private  int categoryId;
+	@JsonIgnore
 	@Column(name = "supplier_id")
 	private  int supplierId;
 	private  int purchases;
 	private  int views;
+	
+	
+	
+	
 	/*
 	 * Providing random Id
 	 * 
@@ -47,6 +55,18 @@ public class Product {
 	}
 	
 	
+	/*
+	 * toString
+	 */
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", code=" + code + ", name=" + name + ", brand=" + brand + ", description="
+				+ description + ", unitPrice=" + unitPrice + ", quantity=" + quantity + ", active=" + active
+				+ ", categoryId=" + categoryId + ", supplierId=" + supplierId + ", purchases=" + purchases + ", views="
+				+ views + "]";
+	}
+
+
 
 	public int getId() {
 		return id;
@@ -72,11 +92,11 @@ public class Product {
 	public void setBrand(String brand) {
 		this.brand = brand;
 	}
-	public String getDiscription() {
-		return discription;
+	public String getDescription() {
+		return description;
 	}
-	public void setDiscription(String discription) {
-		this.discription = discription;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	public double getUnitPrice() {
 		return unitPrice;
