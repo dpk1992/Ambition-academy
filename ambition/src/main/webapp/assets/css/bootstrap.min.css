@@ -3918,8 +3918,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 	-ms-flex-pack: justify;
 	justify-content: space-between;
 	padding: .5rem 1rem;
-	top: 0px;
-	height: 5px;
+	
 }
 
 .navbar>.container, .navbar>.container-fluid {
